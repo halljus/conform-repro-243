@@ -1,0 +1,14 @@
+node_modules
+
+/build
+/public/build
+/app/styles/bootstrap.css
+.env
+
+/prisma/data.db
+/prisma/data.db-journal
+
+/coverage
+/playwright/results/
+/playwright/report/
+/playwright/.cache/

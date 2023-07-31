@@ -157,7 +157,9 @@ export async function action({ request }: ActionArgs) {
     schema: newContributingFactorSchema.superRefine(({ name }, ctx) => {
       return refine(ctx, {
         path: ['name'],
-        validate: () => !isExistingContributingFactor?.(name),
+        validate: async () => {
+          return !(await isExistingContributingFactor(name));
+        },
         message: 'A Contributing Factor with that name already exists',
       });
     }),

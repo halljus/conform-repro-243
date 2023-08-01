@@ -10,7 +10,6 @@ import reactToastifyStylesHref from "react-toastify/dist/ReactToastify.css";
 import {
   createContributingFactor,
   getContributingFactorByName,
-  getGroupedContributingFactorOptions,
 } from "~/contributing-factors/contributing-factor.server";
 
 const createContributingFactorSchema = z.object({
@@ -23,10 +22,7 @@ export function links() {
 
 // Comment out this loader to "fix" the problem?!
 export async function loader({ request }: LoaderArgs) {
-  return json({
-    groupedContributingFactorOptions:
-      await getGroupedContributingFactorOptions(),
-  });
+  return json("anything");
 }
 
 export default function AdminContributingFactors() {

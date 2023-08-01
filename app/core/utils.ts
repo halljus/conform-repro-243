@@ -1,4 +1,4 @@
-const DEFAULT_REDIRECT = '/';
+const DEFAULT_REDIRECT = "/";
 
 /**
  * This should be used any time the redirect path is user-provided
@@ -11,11 +11,11 @@ export function safeRedirect(
   to: FormDataEntryValue | string | null | undefined,
   defaultRedirect: string = DEFAULT_REDIRECT,
 ) {
-  if (!to || typeof to !== 'string') {
+  if (!to || typeof to !== "string") {
     return defaultRedirect;
   }
 
-  if (!to.startsWith('/') || to.startsWith('//')) {
+  if (!to.startsWith("/") || to.startsWith("//")) {
     return defaultRedirect;
   }
 
@@ -25,7 +25,7 @@ export function safeRedirect(
 // TODO: remove once requestIdleCallback is available in Safari
 // https://caniuse.com/requestidlecallback
 export function requestIdleCallbackShim(cb: () => void) {
-  if (typeof requestIdleCallback === 'function') {
+  if (typeof requestIdleCallback === "function") {
     return requestIdleCallback(cb);
   }
   return setTimeout(cb, 1);

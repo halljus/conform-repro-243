@@ -1,8 +1,8 @@
-import { isRouteErrorResponse, useRouteError } from '@remix-run/react';
-import NotFound from '~/core/not-found';
-import { ReloadPageLink } from './reload-page-link';
-import { GoHomeLink } from './go-home-link';
-import type { GuardType } from './types';
+import { isRouteErrorResponse, useRouteError } from "@remix-run/react";
+import NotFound from "~/core/not-found";
+import { ReloadPageLink } from "./reload-page-link";
+import { GoHomeLink } from "./go-home-link";
+import type { GuardType } from "./types";
 
 export function ErrorBoundary() {
   const error = useRouteError();
@@ -23,12 +23,17 @@ export function ErrorBoundary() {
           {error.status === 403 ? (
             <>
               <p>You are not authorized to view this page.</p>
-              <p>Please contact an application superuser if you feel you need access.</p>
+              <p>
+                Please contact an application superuser if you feel you need
+                access.
+              </p>
             </>
           ) : null}
           {error.data ? <p>The error message was as follows:</p> : null}
         </section>
-        {error.data ? <BoundaryError>{renderRouteErrorData(error.data)}</BoundaryError> : null}
+        {error.data ? (
+          <BoundaryError>{renderRouteErrorData(error.data)}</BoundaryError>
+        ) : null}
         <RecoveryLinks />
       </BoundaryContainer>
     );
@@ -46,10 +51,15 @@ export function ErrorBoundary() {
         </span>
       </h1>
       <section>
-        <p>Something unexpected happened and we were not prepared. Sorry about that.</p>
+        <p>
+          Something unexpected happened and we were not prepared. Sorry about
+          that.
+        </p>
         <p>The error message was as follows:</p>
       </section>
-      <BoundaryError>{error instanceof Error ? error.message : 'Unknown Error'}</BoundaryError>
+      <BoundaryError>
+        {error instanceof Error ? error.message : "Unknown Error"}
+      </BoundaryError>
       <RecoveryLinks />
     </BoundaryContainer>
   );
@@ -67,7 +77,7 @@ function BoundaryError({ children }: { children: React.ReactNode }) {
   return (
     <pre
       className="p-5 bg-black text-white w-100"
-      style={{ maxWidth: '80rem', whiteSpace: 'pre-wrap' }}
+      style={{ maxWidth: "80rem", whiteSpace: "pre-wrap" }}
     >
       <code>{children}</code>
     </pre>
@@ -83,8 +93,10 @@ function RecoveryLinks() {
   );
 }
 
-function renderRouteErrorData(routeErrorData: GuardType<typeof isRouteErrorResponse>) {
-  if (typeof routeErrorData === 'object') {
+function renderRouteErrorData(
+  routeErrorData: GuardType<typeof isRouteErrorResponse>,
+) {
+  if (typeof routeErrorData === "object") {
     return JSON.stringify(routeErrorData, null, 2);
   }
 

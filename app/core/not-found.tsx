@@ -1,4 +1,4 @@
-import { GoHomeLink } from './go-home-link';
+import { GoHomeLink } from "./go-home-link";
 
 export default function NotFound() {
   return (

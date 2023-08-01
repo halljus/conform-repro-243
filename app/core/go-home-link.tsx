@@ -1,6 +1,6 @@
-import { Link } from '@remix-run/react';
-import { Stack } from 'react-bootstrap';
-import { MdHome } from 'react-icons/md';
+import { Link } from "@remix-run/react";
+import { Stack } from "react-bootstrap";
+import { MdHome } from "react-icons/md";
 
 export function GoHomeLink() {
   return (

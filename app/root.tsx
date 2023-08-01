@@ -1,13 +1,20 @@
-import type { LinksFunction } from '@remix-run/node';
-import { Links, LiveReload, Meta, Outlet, Scripts, ScrollRestoration } from '@remix-run/react';
-import { cssBundleHref } from '@remix-run/css-bundle';
-import nProgressStylesHref from 'nprogress/nprogress.css';
-import bootstrapStylesHref from 'bootstrap/dist/css/bootstrap.min.css';
+import type { LinksFunction } from "@remix-run/node";
+import {
+  Links,
+  LiveReload,
+  Meta,
+  Outlet,
+  Scripts,
+  ScrollRestoration,
+} from "@remix-run/react";
+import { cssBundleHref } from "@remix-run/css-bundle";
+import nProgressStylesHref from "nprogress/nprogress.css";
+import bootstrapStylesHref from "bootstrap/dist/css/bootstrap.min.css";
 
 export const links: LinksFunction = () => [
-  ...(cssBundleHref ? [{ rel: 'stylesheet', href: cssBundleHref }] : []),
-  { rel: 'stylesheet', href: bootstrapStylesHref },
-  { rel: 'stylesheet', href: nProgressStylesHref },
+  ...(cssBundleHref ? [{ rel: "stylesheet", href: cssBundleHref }] : []),
+  { rel: "stylesheet", href: bootstrapStylesHref },
+  { rel: "stylesheet", href: nProgressStylesHref },
 ];
 
 export default function App() {

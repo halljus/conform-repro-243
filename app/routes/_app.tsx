@@ -1,17 +1,17 @@
-import * as React from 'react';
-import { Outlet, useNavigation } from '@remix-run/react';
-import nProgress from 'nprogress';
-import { useSpinDelay } from 'spin-delay';
-import { clsx } from 'clsx';
-import { Container } from 'react-bootstrap';
-import { ToastContainer } from 'react-toastify';
-import { ErrorBoundary as CoreErrorBoundary } from '~/core/errors';
+import * as React from "react";
+import { Outlet, useNavigation } from "@remix-run/react";
+import nProgress from "nprogress";
+import { useSpinDelay } from "spin-delay";
+import { clsx } from "clsx";
+import { Container } from "react-bootstrap";
+import { ToastContainer } from "react-toastify";
+import { ErrorBoundary as CoreErrorBoundary } from "~/core/errors";
 
 nProgress.configure({ showSpinner: false });
 
 export default function AppLayout() {
   const navigation = useNavigation();
-  const isNavigating = navigation.state !== 'idle';
+  const isNavigating = navigation.state !== "idle";
   const isNavigatingSlowly = useSpinDelay(isNavigating);
 
   React.useEffect(() => {
@@ -23,13 +23,17 @@ export default function AppLayout() {
     <>
       <fieldset
         disabled={isNavigatingSlowly}
-        className={clsx({ 'opacity-75': isNavigatingSlowly })}
+        className={clsx({ "opacity-75": isNavigatingSlowly })}
       >
         <Container as="main" className="py-5">
           <Outlet />
         </Container>
       </fieldset>
-      <ToastContainer autoClose={3000} position="bottom-right" toastClassName="mt-3 mb-0" />
+      <ToastContainer
+        autoClose={3000}
+        position="bottom-right"
+        toastClassName="mt-3 mb-0"
+      />
     </>
   );
 }

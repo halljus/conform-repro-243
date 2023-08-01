@@ -3,7 +3,10 @@
 //
 // Adapted from the Remix Indie Stack
 
-export function singleton<Value>(name: string, valueFactory: () => Value): Value {
+export function singleton<Value>(
+  name: string,
+  valueFactory: () => Value,
+): Value {
   const g = global as any;
   g.__singletons ??= {};
   g.__singletons[name] ??= valueFactory();
